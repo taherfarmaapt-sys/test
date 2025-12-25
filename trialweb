@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apotek Sehat Bersama</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset dan Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header/Navbar */
+        header {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .menu {
+            list-style: none;
+            display: flex;
+        }
+        .menu li {
+            margin-left: 20px;
+        }
+        .menu a {
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .menu a:hover {
+            color: #e9ecef;
+        }
+        /* Hamburger Menu for Mobile */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, #28a745, #4CAF50);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+        .hero img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .hero img:hover {
+            transform: scale(1.05);
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+        }
+        /* Sections */
+        section {
+            padding: 60px 0;
+        }
+        section h2 {
+            font-size: 2rem;
+            color: #28a745;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        /* Profil */
+        .profil {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .profil-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .profil-text h3 {
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+        .profil-img {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        .profil-img img {
+            max-width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .profil-img img:hover {
+            transform: scale(1.05);
+        }
+        /* Cabang */
+        .cabang-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .cabang-item {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s ease;
+        }
+        .cabang-item:hover {
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .cabang-item h3 {
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+        /* Kontak */
+        .kontak {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .kontak-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        .kontak-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        .kontak-form form {
+            display: flex;
+            flex-direction: column;
+        }
+        .kontak-form input, .kontak-form textarea {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .kontak-form button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .kontak-form button:hover {
+            background-color: #218838;
+        }
+        /* Footer */
+        footer {
+            background-color: #28a745;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        footer a {
+            color: #e9ecef;
+            margin: 0 10px;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #28a745;
+                width: 200px;
+                padding: 10px;
+            }
+            .menu.active {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .profil {
+                flex-direction: column;
+            }
+            .kontak {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Apotek Sehat Bersama</div>
+            <ul class="menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#profil">Profil</a></li>
+                <li><a href="#cabang">Cabang</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <img src="https://via.placeholder.com/600x300/28a745/ffffff?text=Ilustrasi+Apotek" alt="Ilustrasi Apotek">
+            <h1>Selamat Datang di Apotek Sehat Bersama</h1>
+            <p>Kesehatan Anda, Prioritas Kami. Obat Berkualitas dengan Pelayanan Terbaik.</p>
+        </div>
+    </section>
+
+    <section id="profil" class="container">
+        <h2>Profil Perusahaan</h2>
+        <div class="profil">
+            <div class="profil-text">
+                <h3>Sejarah Singkat</h3>
+                <p>Apotek Sehat Bersama didirikan pada tahun 2010 dengan visi menjadi apotek terdepan dalam menyediakan layanan kesehatan berkualitas. Kami berkomitmen untuk memberikan obat-obatan asli dan konsultasi kesehatan yang profesional.</p>
+                <h3>Visi & Misi</h3>
+                <p><strong>Visi:</strong> Menjadi apotek pilihan masyarakat untuk kesehatan yang lebih baik.</p>
+                <p><strong>Misi:</strong> Menyediakan obat berkualitas, pelayanan ramah, dan edukasi kesehatan kepada masyarakat.</p>
+            </div>
+            <div class="profil-img">
+                <img src="https://via.placeholder.com/400x300/4CAF50/ffffff?text=Foto+Tim+Apotek" alt="Foto Tim Apotek">
+            </div>
+        </div>
+    </section>
+
+    <section id="cabang" class="container">
+        <h2>Daftar Cabang Apotek</h2>
+        <div class="cabang-grid">
+            <div class="cabang-item">
+                <h3>Cabang Jakarta Pusat</h3>
+                <p>Alamat: Jl. Sudirman No. 123, Jakarta Pusat</p>
+                <p>Telepon: (021) 123-4567 | WhatsApp: 0812-3456-7890</p>
+                <a href="https://maps.google.com/?q=Jl.+Sudirman+No.+123,+Jakarta+Pusat" class="btn" target="_blank">Lihat di Maps</a>
+            </div>
+            <div class="cabang-item">
+                <h3>Cabang Bandung</h3>
+                <p>Alamat: Jl. Asia Afrika No. 456, Bandung</p>
+                <p>Telepon: (022) 987-6543 | WhatsApp: 0813-9876-5432</p>
+                <a href="https://maps.google.com/?q=Jl.+Asia+Afrika+No.+456,+Bandung" class="btn" target="_blank">Lihat di Maps</a>
+            </div>
+            <div class="cabang-item">
+                <h3>Cabang Surabaya</h3>
+                <p>Alamat: Jl. Tunjungan No. 789, Surabaya</p>
+                <p>Telepon: (031) 567-8901 | WhatsApp: 0814-5678-9012</p>
+                <a href="https://maps.google.com/?q=Jl.+Tunjungan+No.+789,+Surabaya" class="btn" target="_blank">Lihat di Maps</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="container">
+        <h2>Kontak Kami</h2>
+        <div class="kontak">
+            <div class="kontak-info">
+                <h3>Informasi Kontak</h3>
+                <p>Alamat Pusat: Jl. Kesehatan No. 100, Jakarta</p>
+                <p>Telepon: (021) 123-4567</p>
+                <p>Email: info@apoteksehatbersama.com</p>
+            </div>
+            <div class="kontak-form">
+                <h3>Kirim Pesan</h3>
+                <form action="#" method="post">
+                    <input type="text" name="nama" placeholder="Nama Anda" required>
+                    <input type="email" name="email" placeholder="Email Anda" required>
+                    <textarea name="pesan" placeholder="Pesan Anda" rows="5" required></textarea>
+                    <button type="submit">Kirim</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Apotek Sehat Bersama. Semua Hak Dilindungi.</p>
+            <a href="#" target="_blank">Facebook</a> | <a href="#" target="_blank">Instagram</a> | <a href="#" target="_blank">Twitter</a>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
